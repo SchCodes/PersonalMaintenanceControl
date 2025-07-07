@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Final - Sistema de Controle de Manutenção Industrial</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        h4 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        .info-box {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        .success {
+            background: #d5f4e6;
+            border-left-color: #27ae60;
+        }
+        .warning {
+            background: #fef9e7;
+            border-left-color: #f39c12;
+        }
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .checklist li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric-card {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .screenshot-placeholder {
+            background: #ecf0f1;
+            border: 2px dashed #bdc3c7;
+            padding: 40px;
+            text-align: center;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .diagram-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #3498db;
+            padding: 60px;
+            text-align: center;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .logo-placeholder {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RELATÓRIO FINAL - PROGRAMAÇÃO WEB</h1>
+
+        <h2>IDENTIFICAÇÃO DO ESTUDANTE E DO SISTEMA</h2>
+        
+        <div class="info-box">
+            <p><strong>Estudante:</strong> Ericson Schmidt Bicalho</p>
+            <p><strong>Número de Matrícula:</strong> 20241TBOR10010018</p>
+            <p><strong>Título do Sistema:</strong> Sistema de Controle de Manutenção Industrial</p>
+            <p><strong>Tema do Sistema:</strong> Sistema para controle de manutenção industrial com gestão de equipamentos, materiais e atividades de manutenção.</p>
+        </div>
+
+        <div class="logo-container" style="text-align: center; margin: 20px 0;">
+            <img src="img/logos/logo.png" alt="Logo do Sistema" style="max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onclick="window.open(this.src, '_blank')" title="Clique para ampliar" style="cursor: pointer;">
+            <h3 style="margin-top: 15px; color: #2c3e50;">Personal Maintenance Control</h3>
+            <p style="color: #7f8c8d; font-size: 1.1em;">Sistema de Controle de Manutenção Industrial</p>
+        </div>
+
+        <h2>JUSTIFICATIVA E OBJETIVOS</h2>
+        <p>O controle de manutenção industrial é fundamental para garantir a eficiência operacional, segurança e rastreabilidade das atividades em plantas industriais. Este sistema foi desenvolvido para atender às necessidades de técnicos e administradores que precisam documentar, organizar e consultar atividades de manutenção de forma sistematizada.</p>
+        
+        <p><strong>Principais funcionalidades:</strong></p>
+        <ul class="checklist">
+            <li>Gestão completa de usuários com níveis de acesso</li>
+            <li>Cadastro e controle de equipamentos industriais</li>
+            <li>Gestão de materiais</li>
+            <li>Registro detalhado de atividades de manutenção</li>
+            <li>Upload e armazenamento de imagens</li>
+            <li>Relatórios e dashboards informativos</li>
+            <li>Controle de segurança (PT, AST, GRO)</li>
+        </ul>
+
+        <h2>DESCRIÇÃO GERAL DAS FUNCIONALIDADES</h2>
+        
+        <h3>INSERTS:</h3>
+        <ul>
+            <li>Cadastro de usuários (nome, login, senha, cargo, nível de acesso, email, foto)</li>
+            <li>Cadastro de equipamentos (nome, tipo, código, localização, área, descrição, imagem)</li>
+            <li>Cadastro de materiais (nome, código, descrição, unidade de medida, imagem)</li>
+            <li>Registro de atividades de manutenção (título, descrição, tipo, equipamento, técnico, datas, imagens)</li>
+            <li>Registro de uso de materiais nas atividades</li>
+        </ul>
+
+        <h3>READS:</h3>
+        <ul>
+            <li>Listagem de usuários com filtros por nível de acesso</li>
+            <li>Consulta de equipamentos por tipo e localização</li>
+            <li>Busca de materiais por código e descrição</li>
+            <li>Visualização de atividades por período, técnico e equipamento</li>
+            <li>Relatórios estatísticos e dashboards</li>
+            <li>Perfil do usuário com estatísticas pessoais</li>
+        </ul>
+
+        <h3>UPDATES:</h3>
+        <ul>
+            <li>Edição de dados de usuários</li>
+            <li>Atualização de informações de equipamentos</li>
+            <li>Modificação de dados de materiais</li>
+            <li>Edição de atividades de manutenção</li>
+            <li>Alteração de status de usuários e equipamentos</li>
+            <li>Atualização de fotos de perfil</li>
+        </ul>
+
+        <h3>DELETES:</h3>
+        <ul>
+            <li>Exclusão de usuários (com limpeza de atividades relacionadas)</li>
+            <li>Remoção de equipamentos</li>
+            <li>Exclusão de materiais</li>
+            <li>Remoção de atividades de manutenção</li>
+            <li>Exclusão de imagens antigas</li>
+        </ul>
+
+        <h3>NÍVEIS DE USUÁRIO:</h3>
+        <table>
+            <tr>
+                <th>Nível</th>
+                <th>Permissões</th>
+                <th>Funcionalidades</th>
+            </tr>
+            <tr>
+                <td><strong>Administrador</strong></td>
+                <td>Acesso total ao sistema</td>
+                <td>Gestão de usuários, equipamentos, materiais, visualização de todas as atividades, relatórios completos</td>
+            </tr>
+            <tr>
+                <td><strong>Técnico</strong></td>
+                <td>Acesso limitado</td>
+                <td>Visualização de equipamentos e materiais, registro de atividades, edição de perfil</td>
+            </tr>
+        </table>
+
+        <h3>LINK DO GITHUB:</h3>
+        <div class="info-box">
+            <p><strong>Repositório:</strong> <a href="https://github.com/SchCodes/PersonalMaintenanceControl" target="_blank" style="color: #3498db; text-decoration: none;">https://github.com/SchCodes/PersonalMaintenanceControl</a></p>
+        </div>
+
+        <h2>PRINCIPAIS TELAS DO SISTEMA (PRINTS)</h2>
+        
+        <h3>Tela 1: Tela de Login</h3>
+        <div class="screenshot-placeholder">
+            <h4>📱 CAPTURA DE TELA - TELA DE LOGIN</h4>
+            <img src="screenshots/tela_login.png" alt="Tela de Login" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Finalidade:</strong> Autenticação de usuários com validação de credenciais e verificação automática de problemas na primeira execução.</p>
+            <p><strong>Funcionalidades:</strong> Login seguro, mensagem informativa para primeira execução, design responsivo.</p>
+        </div>
+
+        <h3>Tela 2: Dashboard Principal</h3>
+        <div class="screenshot-placeholder">
+            <h4>📊 CAPTURA DE TELA - DASHBOARD</h4>
+            <img src="screenshots/tela_dashboard.png" alt="Dashboard Principal" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Finalidade:</strong> Visão geral do sistema com estatísticas, cards informativos e menu de navegação principal.</p>
+            <p><strong>Funcionalidades:</strong> Estatísticas de atividades, acesso rápido aos módulos, interface personalizada por nível de usuário.</p>
+        </div>
+
+        <h3>Tela 3: Listagem de Equipamentos</h3>
+        <div class="screenshot-placeholder">
+            <h4>⚙️ CAPTURA DE TELA - EQUIPAMENTOS</h4>
+            <img src="screenshots/tela_equipamentos.png" alt="Listagem de Equipamentos" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Finalidade:</strong> Visualização e gestão de equipamentos industriais com filtros e ações de CRUD.</p>
+            <p><strong>Funcionalidades:</strong> Listagem paginada, busca por tipo/localização, ações de editar/excluir, upload de imagens.</p>
+        </div>
+
+        <h3>Tela 4: Formulário de Atividade</h3>
+        <div class="screenshot-placeholder">
+            <h4>🔧 CAPTURA DE TELA - ATIVIDADE</h4>
+            <img src="screenshots/tela_atividade.png" alt="Formulário de Atividade" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Finalidade:</strong> Registro detalhado de atividades de manutenção com campos de segurança e upload de imagens.</p>
+            <p><strong>Funcionalidades:</strong> Seleção de equipamento, campos PT/AST/GRO, upload antes/depois, seleção de materiais.</p>
+        </div>
+
+        <h3>Tela 5: Relatórios</h3>
+        <div class="screenshot-placeholder">
+            <h4>📈 CAPTURA DE TELA - RELATÓRIOS</h4>
+            <img src="screenshots/tela_relatorios.png" alt="Tela de Relatórios" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Finalidade:</strong> Geração de relatórios com gráficos e estatísticas das atividades de manutenção.</p>
+            <p><strong>Funcionalidades:</strong> Filtros por período, gráficos interativos.</p>
+        </div>
+
+        <h2>MODELAGEM DO SISTEMA</h2>
+        
+        <h3>Diagrama Geral de Casos de Uso:</h3>
+        <div class="diagram-placeholder">
+            <h4>📋 DIAGRAMA DE CASOS DE USO</h4>
+            <img src="screenshots/diagrama_casos_uso.png" alt="Diagrama de Casos de Uso" style="max-width: 100%; height: auto; border: 1px solid #3498db; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Ator Principal:</strong> Usuário (Admin/Técnico)</p>
+            <p><strong>Casos de Uso Principais:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Autenticar no Sistema</li>
+                <li>Gerenciar Usuários (Admin)</li>
+                <li>Gerenciar Equipamentos</li>
+                <li>Gerenciar Materiais</li>
+                <li>Registrar Atividade</li>
+                <li>Visualizar Relatórios</li>
+                <li>Editar Perfil</li>
+            </ul>
+        </div>
+
+        <h3>Diagrama Entidade-Relacionamento:</h3>
+        <div class="diagram-placeholder">
+            <h4>🗄️ DIAGRAMA E-R</h4>
+            <img src="screenshots/diagrama_er.png" alt="Diagrama Entidade-Relacionamento" style="max-width: 100%; height: auto; border: 1px solid #3498db; border-radius: 8px; margin: 10px 0; cursor: pointer;" onclick="window.open(this.src, '_blank')" title="Clique para ampliar">
+            <p><strong>Entidades Principais:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li><strong>users</strong> (id, nome, login, senha, cargo, nivel_acesso, email, foto, status)</li>
+                <li><strong>equipment</strong> (id, nome, tipo, codigo, localizacao, area_planta, status, descricao, imagem)</li>
+                <li><strong>materials</strong> (id, nome, codigo, descricao, unidade_medida, imagem)</li>
+                <li><strong>maintenance_activities</strong> (id, usuario_id, equipamento_id, titulo, descricao, tipo_manutencao, status, datas, imagens)</li>
+                <li><strong>material_usage</strong> (id, atividade_id, material_id, quantidade)</li>
+                <li><strong>configuracao</strong> (id, ajuste_inicial, data_criacao)</li>
+            </ul>
+            <p><strong>Relacionamentos:</strong> users 1:N maintenance_activities, equipment 1:N maintenance_activities, maintenance_activities N:N materials (via material_usage)</p>
+        </div>
+
+        <h2>RELATO DO USO DA INTELIGÊNCIA ARTIFICIAL</h2>
+        <div class="info-box">
+            <p><strong>Utilização da IA durante o desenvolvimento:</strong></p>
+            <ul>
+                <li>Utilizei IA em todas as etapas deste projeto, tanto na elaboração do esboço do sistema, quanto em todo o desenvolvimento do mesmo.</li>
+            </ul>
+            <p><strong>Recursos externos consultados:</strong></p>
+            <ul>
+                <li>Documentação oficial do PHP e PDO</li>
+                <li>Tutoriais do Bootstrap para interface responsiva</li>
+                <li>Exemplos de código em repositórios GitHub</li>
+            </ul>
+        </div>
+
+        <h2>CONSIDERAÇÕES FINAIS SOBRE O PROCESSO</h2>
+        
+        <h3>Quais foram as maiores dificuldades técnicas e como foram superadas?</h3>
+        <ul>
+            <li><strong>Verificação automática:</strong> Implementar a verificação automática na primeira execução foi desafiador. Resolvi criando uma tabela de configuração e lógica condicional no login.</li>
+            <li><strong>Interface responsiva:</strong> Adaptar a interface para diferentes dispositivos exigiu conhecimento de CSS e Bootstrap. Estudei e apliquei classes responsivas.</li>
+        </ul>
+
+        <h3>Quais foram os aprendizados mais importantes com o projeto?</h3>
+        <ul>
+            <li><strong>Fluxo completo de desenvolvimento:</strong> Compreendi melhor o processo desde a análise de requisitos até a implementação.</li>
+            <li><strong>Arquitetura de banco de dados:</strong> Aprendi a importância de uma boa modelagem e relacionamentos entre tabelas.</li>
+            <li><strong>Segurança em aplicações web:</strong> Entendi a importância de validação de dados, criptografia de senhas e proteção contra ataques.</li>
+            <li><strong>Gerenciamento de sessões:</strong> Compreendi como implementar controle de acesso e autenticação de usuários.</li>
+            <li><strong>Upload de arquivos:</strong> Aprendi as melhores práticas para upload seguro de imagens com validação.</li>
+        </ul>
+
+        <h3>Como o acompanhamento nas segundas-feiras ou o uso de IA/recursos externos ajudou?</h3>
+        <ul>
+            <li><strong>Acompanhamento:</strong> As orientações nas segundas-feiras foram fundamentais para direcionar o desenvolvimento.</li>
+            <li><strong>IA como ferramenta:</strong> A inteligência artificial acelerou o desenvolvimento fornecendo soluções rápidas e exemplos de código.</li>
+        </ul>
+
+        <h3>O que você faria diferente numa próxima vez?</h3>
+        <ul>
+            <li><strong>Planejamento mais detalhado:</strong> Investiria mais tempo no planejamento inicial e na modelagem do banco de dados.</li>
+            <li><strong>Versionamento:</strong> Faria commits mais frequentes e organizados no Git.</li>
+        </ul>
+
+        <h3>Quais as suas impressões gerais sobre a experiência de desenvolver um sistema completo?</h3>
+        <p>A experiência foi extremamente enriquecedora e proporcionou uma visão real do desenvolvimento de software. Pude aplicar conhecimentos teóricos em um projeto prático e compreender a complexidade de criar um sistema funcional. O projeto demonstrou a importância de planejamento, organização e atenção aos detalhes. A satisfação de ver o sistema funcionando e atendendo aos requisitos foi muito gratificante.</p>
+
+        <h3>Quais sugestões para continuidade do seu sistema em projetos futuros?</h3>
+        <ul>
+            <li><strong>API REST:</strong> Desenvolver uma API para integração com aplicações mobile.</li>
+            <li><strong>Notificações:</strong> Implementar sistema de notificações em tempo real.</li>
+            <li><strong>Análise preditiva:</strong> Adicionar funcionalidades de análise preditiva de manutenção.</li>
+            <li><strong>Integração IoT:</strong> Conectar com sensores e equipamentos inteligentes.</li>
+            <li><strong>Relatórios avançados:</strong> Implementar relatórios mais sofisticados com gráficos interativos.</li>
+            <li><strong>Backup automático:</strong> Sistema de backup e recuperação de dados.</li>
+            <li><strong>Auditoria:</strong> Logs detalhados de todas as operações do sistema.</li>
+            <li><strong>Dados:</strong> Implementaria a possibilidade de exportar os dados do sistema para um arquivo CSV ou Excel.</li>
+        </ul>
+
+        <div class="info-box success" style="text-align: center; margin-top: 40px;">
+            <h2>🎯 MVP CONCLUÍDO COM SUCESSO! ✌️</h2>
+            <p>🚀🚀🚀</p>
+        </div>
+    </div>
+</body>
+</html> 
